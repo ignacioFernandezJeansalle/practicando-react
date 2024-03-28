@@ -1,0 +1,18 @@
+.square {
+  width: 100px;
+  height: 100px;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.square svg {
+  width: 70%;
+  height: auto;
+}
+
+.square.is-turn {
+  background-color: rgba(50, 255, 50, 0.25);
+}

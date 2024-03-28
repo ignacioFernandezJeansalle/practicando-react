@@ -23,3 +23,26 @@ body {
   place-items: center;
   min-height: 100dvh;
 }
+
+:is(h1, h2, h3) {
+  text-align: center;
+}
+
+h1 {
+  font-size: 48px;
+}
+
+.board {
+  padding-block: 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.turn {
+  padding-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 16px;
+}
