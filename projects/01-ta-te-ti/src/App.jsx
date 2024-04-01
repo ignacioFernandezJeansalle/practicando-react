@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { TURNS, WINNING_COMBINATIONS } from "./constants";
+import { TURNS } from "./constants";
+import { checkWinner, checkEndGame } from "./logic/game";
 import Square from "./components/Square";
 
 export default function App() {
@@ -17,9 +18,14 @@ export default function App() {
     setBoard(newBoard);
 
     // Verificar si hay un ganador
-    const isWinner = WINNING_COMBINATIONS.some((combination) => combination.every((index) => newBoard[index] === turn));
+    const isWinner = checkWinner(newBoard, turn);
     if (isWinner) {
       setWinner(turn);
+      console.log("Ganador:", turn);
+      return;
+    } else if (checkEndGame(newBoard)) {
+      setWinner(false); // Empate
+      console.log("Empate");
       return;
     }
 
