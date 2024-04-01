@@ -8,6 +8,7 @@ export default function Square({ index, value, updateBoard, isTurn }) {
   const icon = value && (value === TURNS.X ? <XIcon /> : <OIcon />);
 
   const handleClick = () => {
+    if (!updateBoard) return;
     updateBoard(index);
   };
 
