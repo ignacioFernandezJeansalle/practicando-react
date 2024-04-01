@@ -3,6 +3,12 @@ export const TURNS = {
   O: 2,
 };
 
+export const INITIAL_VALUES = {
+  board: Array(9).fill(null),
+  turn: TURNS.X,
+  winner: null,
+};
+
 export const WINNING_COMBINATIONS = [
   [0, 1, 2],
   [3, 4, 5],
