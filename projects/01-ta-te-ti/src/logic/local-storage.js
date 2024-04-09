@@ -8,7 +8,7 @@ export const loadGameFromLocalStorage = () => {
   const board = loadBoard ? JSON.parse(loadBoard) : null;
 
   const loadTurn = window.localStorage.getItem("turn");
-  const turn = loadTurn ? loadTurn : null;
+  const turn = loadTurn ? parseInt(loadTurn) : null;
 
   return { board, turn };
 };
