@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { INITIAL_VALUES, TURNS } from "./constants";
 import { checkWinner, checkEndGame } from "./logic/game";
+import { saveGameToLocalStorage, loadGameFromLocalStorage, resetGameFromLocalStorage } from "./logic/local-storage";
 import Square from "./components/Square";
 import WinnerModal from "./components/WinnerModal";
 
@@ -9,10 +10,19 @@ export default function App() {
   const [turn, setTurn] = useState(INITIAL_VALUES.turn);
   const [winner, setWinner] = useState(INITIAL_VALUES.winner);
 
+  useEffect(() => {
+    const { board, turn } = loadGameFromLocalStorage();
+    if (board && turn) {
+      setBoard(board);
+      setTurn(turn);
+    }
+  }, []);
+
   const resetGame = () => {
     setBoard(INITIAL_VALUES.board);
     setTurn(INITIAL_VALUES.turn);
     setWinner(INITIAL_VALUES.winner);
+    resetGameFromLocalStorage();
   };
 
   const updateBoard = (index) => {
@@ -37,6 +47,9 @@ export default function App() {
     // Cambiar de turno
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
     setTurn(newTurn);
+
+    // Guardar el juego
+    saveGameToLocalStorage({ board: newBoard, turn: newTurn });
   };
 
   return (
