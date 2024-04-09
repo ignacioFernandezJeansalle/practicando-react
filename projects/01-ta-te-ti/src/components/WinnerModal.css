@@ -1,0 +1,38 @@
+.modal {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: grid;
+  place-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  align-items: center;
+}
+
+.modal-content h2 {
+  font-size: 48px;
+  line-height: 40px;
+}
+
+.modal-content button {
+  background-color: black;
+}
+
+.modal-content svg {
+  width: 100px;
+  height: 100px;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  background-color: black;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  width: 70px;
+  height: auto;
+}
