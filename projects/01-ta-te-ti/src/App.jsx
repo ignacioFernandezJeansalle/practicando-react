@@ -1,12 +1,19 @@
 import { useState } from "react";
-import { TURNS } from "./constants";
+import { INITIAL_VALUES, TURNS } from "./constants";
 import { checkWinner, checkEndGame } from "./logic/game";
 import Square from "./components/Square";
+import WinnerModal from "./components/WinnerModal";
 
 export default function App() {
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const [turn, setTurn] = useState(TURNS.X);
-  const [winner, setWinner] = useState(null);
+  const [board, setBoard] = useState(INITIAL_VALUES.board);
+  const [turn, setTurn] = useState(INITIAL_VALUES.turn);
+  const [winner, setWinner] = useState(INITIAL_VALUES.winner);
+
+  const resetGame = () => {
+    setBoard(INITIAL_VALUES.board);
+    setTurn(INITIAL_VALUES.turn);
+    setWinner(INITIAL_VALUES.winner);
+  };
 
   const updateBoard = (index) => {
     // Si la casilla ya está ocupada, no hacer nada
@@ -21,11 +28,9 @@ export default function App() {
     const isWinner = checkWinner(newBoard, turn);
     if (isWinner) {
       setWinner(turn);
-      console.log("Ganador:", turn);
       return;
     } else if (checkEndGame(newBoard)) {
       setWinner(false); // Empate
-      console.log("Empate");
       return;
     }
 
@@ -49,6 +54,11 @@ export default function App() {
         <Square value={TURNS.X} isTurn={turn === TURNS.X} />
         <Square value={TURNS.O} isTurn={turn === TURNS.O} />
       </section>
+      <section className="reset">
+        <button onClick={resetGame}>Reiniciar juego</button>
+      </section>
+
+      <WinnerModal resetGame={resetGame} winner={winner} />
     </main>
   );
 }
