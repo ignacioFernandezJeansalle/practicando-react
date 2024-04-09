@@ -10,10 +10,14 @@
 }
 
 .modal-content {
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  border-radius: 8px;
+  padding: 64px;
   display: flex;
   flex-direction: column;
   row-gap: 32px;
   align-items: center;
+  background-color: black;
 }
 
 .modal-content h2 {
@@ -21,18 +25,16 @@
   line-height: 40px;
 }
 
-.modal-content button {
-  background-color: black;
-}
-
-.modal-content svg {
+.modal-content span {
+  display: grid;
+  place-items: center;
   width: 100px;
   height: 100px;
   border: 3px solid rgba(255, 255, 255, 0.85);
-  background-color: black;
   border-radius: 8px;
-  display: grid;
-  place-items: center;
-  width: 70px;
+  background-color: rgba(50, 255, 50, 0.25);
+}
+.modal-content svg {
+  width: 70%;
   height: auto;
 }

@@ -1,6 +1,6 @@
+import "./WinnerModal.css";
 import { TURNS } from "../constants";
 import { XIcon, OIcon } from "./Icons";
-import "./WinnerModal.css";
 
 export default function WinnerModal({ resetGame, winner }) {
   if (winner === null) return null;
@@ -16,7 +16,7 @@ export default function WinnerModal({ resetGame, winner }) {
     <section className="modal">
       <div className="modal-content">
         <h2>{result}</h2>
-        {icon}
+        <span>{icon}</span>
         <button onClick={handleClick}>Volver a jugar</button>
       </div>
     </section>
