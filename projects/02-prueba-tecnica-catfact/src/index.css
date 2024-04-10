@@ -17,16 +17,8 @@
   box-sizing: border-box;
 }
 
-body {
-  display: grid;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-  padding: 32px;
-}
-
 main {
-  max-width: 768px;
+  padding: 32px;
   display: flex;
   flex-direction: column;
   row-gap: 32px;
@@ -54,7 +46,26 @@ button:hover {
   color: #222;
 }
 
-img {
+section {
+  display: flex;
+  column-gap: 32px;
+  justify-content: space-between;
+  max-width: 768px;
+}
+
+section p {
+  font-size: 24px;
+}
+
+section img {
   max-width: 250px;
   height: auto;
+}
+
+@media (width < 768px) {
+  section {
+    flex-direction: column;
+    row-gap: 32px;
+    align-items: center;
+  }
 }
