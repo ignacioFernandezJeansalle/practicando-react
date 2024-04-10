@@ -37,6 +37,23 @@ h1 {
   line-height: 1.1;
 }
 
+button {
+  padding: 16px 32px;
+  font-size: 16px;
+  max-width: fit-content;
+  border: 2px solid #eee;
+  border-radius: 4px;
+  background: transparent;
+  color: #eee;
+  cursor: pointer;
+  transition: background 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+
+button:hover {
+  background: #eee;
+  color: #222;
+}
+
 img {
   max-width: 250px;
   height: auto;

@@ -10,8 +10,14 @@ export default function App() {
   const [fact, setFact] = useState("");
   const [firstWord, setFirstWord] = useState("");
   const [image, setImage] = useState("");
+  const [newFact, setNewFact] = useState(false);
+
+  const handleClick = () => {
+    setNewFact(!newFact);
+  };
 
   useEffect(() => {
+    console.log("useEffec Fact");
     fetch(URL_API_FACT)
       .then((res) => res.json())
       .then((data) => {
@@ -19,7 +25,7 @@ export default function App() {
         setFact(newFact);
         setFirstWord(newFact.split(" ")[0]);
       });
-  }, []);
+  }, [newFact]);
 
   useEffect(() => {
     //const URL = URL_API_IMG + firstWord;
@@ -35,6 +41,7 @@ export default function App() {
   return (
     <main>
       <h1>CAT FATCS</h1>
+      <button onClick={handleClick}>Nuevo facto</button>
       <p>
         <u>Fact:</u> {fact}
       </p>
