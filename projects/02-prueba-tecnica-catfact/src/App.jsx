@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 
-const URL_API_FACT = "https://catfact.ninja/fact";
+const CAT_FACT_ENDPOINT = "https://catfact.ninja/fact";
 //const URL_API_IMG = "https://cataas.com/cat/says/";
-
 //Estoy usando otra API por que cataas no esta funcionando...
-const URL_API_IMG_ALT = "https://api.thecatapi.com/v1/images/search";
+const CAT_IMAGE_ENDPOINT_ALT = "https://api.thecatapi.com/v1/images/search";
 
 export default function App() {
   const [fact, setFact] = useState("");
-  const [firstWord, setFirstWord] = useState("");
-  const [image, setImage] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [newFact, setNewFact] = useState(false);
 
   const handleClick = () => {
@@ -17,38 +15,36 @@ export default function App() {
   };
 
   useEffect(() => {
-    console.log("useEffec Fact");
-    fetch(URL_API_FACT)
+    fetch(CAT_FACT_ENDPOINT)
       .then((res) => res.json())
       .then((data) => {
-        const newFact = data.fact;
-        setFact(newFact);
-        setFirstWord(newFact.split(" ")[0]);
+        const { fact } = data;
+        setFact(fact);
       });
   }, [newFact]);
 
   useEffect(() => {
-    //const URL = URL_API_IMG + firstWord;
-    const URL = URL_API_IMG_ALT;
+    if (!fact) return;
 
-    if (fact) {
-      fetch(URL)
-        .then((res) => res.json())
-        .then((data) => setImage(data[0].url));
-    }
+    /* const firstWord = fact.split(" ")[0];
+    const URL = `${URL_API_IMG}${firstWord}`; */
+    const URL = CAT_IMAGE_ENDPOINT_ALT;
+
+    fetch(URL)
+      .then((res) => res.json())
+      .then((data) => setImageUrl(data[0].url));
   }, [fact]);
 
   return (
     <main>
       <h1>CAT FATCS</h1>
-      <button onClick={handleClick}>Nuevo facto</button>
-      <p>
-        <u>Fact:</u> {fact}
-      </p>
-      <p>
-        <u>First word:</u> {firstWord}
-      </p>
-      {image && <img src={image} alt="Foto de un gato random" />}
+      <button onClick={handleClick}>New Fact</button>
+      <section>
+        <p>
+          <u>Fact:</u> {fact}
+        </p>
+        {imageUrl && <img src={imageUrl} alt="Foto de un gato aleatorio" />}
+      </section>
     </main>
   );
 }
