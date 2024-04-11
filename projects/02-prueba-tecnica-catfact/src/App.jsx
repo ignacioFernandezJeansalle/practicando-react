@@ -12,7 +12,7 @@ export default function App() {
   return (
     <main>
       <h1>CAT FATCS</h1>
-      <button onClick={handleClick}>New Fact</button>
+      <button onClick={handleClick}>Get new fact</button>
       <section>
         <p>
           <u>Fact:</u> {fact}
