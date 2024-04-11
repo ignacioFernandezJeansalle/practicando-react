@@ -22,9 +22,9 @@ export default function App() {
   return (
     <>
       <header>
-        <h1>Prueba técnica - Buscador de películas 🔎</h1>
+        <h1>Buscador de películas 🔎</h1>
         <form onSubmit={handleSubmit}>
-          <input name="search" type="text" placeholder="Superman, Batman, La vida es bella...." />
+          <input name="search" type="text" placeholder="Superman, Batman..." />
           <button type="submit">Buscar</button>
         </form>
       </header>
